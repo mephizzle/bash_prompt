@@ -54,7 +54,7 @@ function set_git_branch() {
   fi
  
   # Set the final branch string.
-  BRANCH="${PURPLE}${branch}${COLOR_NONE} "
+  BRANCH="${YELLOW}${branch}${COLOR_NONE} "
 }
  
 # Return the prompt symbol to use, colorized based on the return value of the
