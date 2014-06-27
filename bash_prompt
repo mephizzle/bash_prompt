@@ -32,6 +32,8 @@ LIGHT_GREEN="\[\033[1;32m\]"
       WHITE="\[\033[1;37m\]"
  LIGHT_GRAY="\[\033[0;37m\]"
  COLOR_NONE="\[\e[0m\]"
+
+CHAR_DIRTY="\316\273"
  
 # determine git branch name
 function parse_git_branch(){
@@ -39,22 +41,22 @@ function parse_git_branch(){
 }
 
 function set_git_state(){
-  result=$(git diff --shortstat|tail -n 1)
+  result=$(git diff 2>/dev/null --shortstat|tail -n 1)
   if [ "$result" == "" ]
   then
     state=""
   else
-    state="${RED}[X] ${COLOR_NONE}"
+    state="${LIGHT_RED}${CHAR_DIRTY} ${COLOR_NONE}"
   fi
 }
 
 function set_hg_state(){
-  result=$(hg st|tail -n 1)
+  result=$(hg st 2>/dev/null|tail -n 1)
   if [ "$result" == "" ]
   then
     state=""
   else
-    state="${RED}[X] ${COLOR_NONE}"
+    state="${LIGHT_RED}${CHAR_DIRTY} ${COLOR_NONE}"
   fi
 }
  
@@ -65,6 +67,7 @@ function parse_hg_branch(){
  
 # Determine the branch/state information for this git repository.
 function set_git_branch() {
+  state=""
   # Get the name of the branch.
   branch=$(parse_git_branch)
   # if not git then maybe mercurial
