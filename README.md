@@ -1,6 +1,6 @@
 bash_prompt
 ===========
 
-1. clone
-2. ln -s `<bash_prompt file>` ~/.bash_prompt
-3. '. ~/.bash_prompt' in ~/.profile
+1. `git clone https://github.com/mephizzle/bash_prompt.git`
+2. `ln -s bash_prompt ~/.bash_prompt`
+3. `echo ". ~/.bash_prompt" >> ~/.profile`
