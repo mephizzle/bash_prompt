@@ -1,6 +1,8 @@
 bash_prompt
 ===========
 
+A fairly simple script to add some additional functionality to your bash prompt.
+
 ## Installation:
 
 First, clone the repository
