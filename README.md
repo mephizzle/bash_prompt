@@ -14,5 +14,5 @@ ln -s <bash_prompt file> ~/.bash_prompt
 
 Lastly, add the following line to either ~/.bash_profile or ~/.bashrc (depending on which one you use):
 ```
-. ~/.bash_prompt' in ~/.profile
+. ~/.bash_prompt
 ```
