@@ -1,7 +1,7 @@
 bash_prompt
 ===========
 
-# Installation:
+## Installation:
 
 First, clone the repository
 
