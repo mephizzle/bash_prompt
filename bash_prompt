@@ -47,6 +47,16 @@ function set_git_state(){
     state="${RED}[X] ${COLOR_NONE}"
   fi
 }
+
+function set_hg_state(){
+  result=$(hg st|tail -n 1)
+  if [ "$result" == "" ]
+  then
+    state=""
+  else
+    state="${RED}[X] ${COLOR_NONE}"
+  fi
+}
  
 # determine mercurial branch name
 function parse_hg_branch(){
@@ -63,6 +73,10 @@ function set_git_branch() {
     set_git_state
   else
     branch=$(parse_hg_branch)
+    if [ "$branch" != "" ]
+    then
+      set_hg_state
+    fi
   fi
  
   # Set the final branch string.
