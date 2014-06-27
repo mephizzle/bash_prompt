@@ -37,6 +37,16 @@ LIGHT_GREEN="\[\033[1;32m\]"
 function parse_git_branch(){
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
+function set_git_state(){
+  result=$(git diff --shortstat|tail -n 1)
+  if [ "$result" == "" ]
+  then
+    state=""
+  else
+    state="${RED}[X] ${COLOR_NONE}"
+  fi
+}
  
 # determine mercurial branch name
 function parse_hg_branch(){
@@ -48,8 +58,10 @@ function set_git_branch() {
   # Get the name of the branch.
   branch=$(parse_git_branch)
   # if not git then maybe mercurial
-  if [ "$branch" == "" ]
+  if [ "$branch" != "" ]
   then
+    set_git_state
+  else
     branch=$(parse_hg_branch)
   fi
  
@@ -87,11 +99,12 @@ function set_bash_prompt () {
  
   # Set the BRANCH variable.
   set_git_branch
- 
+
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}${BLUE}\w${COLOR_NONE}${BRANCH}^_^ ${PROMPT_SYMBOL} "
+${PYTHON_VIRTUALENV}${BLUE}\w${COLOR_NONE}${BRANCH}${state}${COLOR_NONE}^_^ ${PROMPT_SYMBOL} "
 }
  
 # Tell bash to execute this function just before displaying its prompt.
 PROMPT_COMMAND=set_bash_prompt
+
