@@ -47,7 +47,7 @@ function parse_git_branch(){
 }
 
 function set_git_state(){
-  result=$(git diff 2>/dev/null --shortstat|tail -n 1)
+  result=$(git status 2>/dev/null --porcelain|tail -n 1)
   if [ "$result" == "" ]
   then
     state=""
