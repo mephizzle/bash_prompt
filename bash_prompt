@@ -98,7 +98,7 @@ function set_prompt_symbol () {
   if test $1 -eq 0 ; then
       PROMPT_SYMBOL="\$"
   else
-      PROMPT_SYMBOL="${RED}\$${COLOR_NONE}"
+      PROMPT_SYMBOL="${RED}(╯°□°）╯︵ ┻━┻${COLOR_NONE}"
   fi
 }
  
@@ -125,7 +125,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}${BLUE}\w${COLOR_NONE}${BRANCH}${state}${COLOR_NONE}^_^ ${PROMPT_SYMBOL} "
+${PYTHON_VIRTUALENV}${BLUE}\w${COLOR_NONE}${BRANCH}${state}${COLOR_NONE}>_< ${PROMPT_SYMBOL} "
 }
  
 # Tell bash to execute this function just before displaying its prompt.
